@@ -19,11 +19,15 @@ class adjacency_list_node(object):
    
     def __str__(self, *args, **kwargs):
         return self.__repr__()
-
+class tree:
+    def __init__(self):
+        self.leaf=None
+        self.branches=[]
 class adjacency_list(object):
     def __init__(self):
         self.nodes=[]
-        
+        self.time=0
+        self.deepfirstSearch=[]
     def insert_node_by_node(self, node):
         self.nodes.append(node)
         
@@ -57,14 +61,41 @@ class adjacency_list(object):
                 newVertex=self.getNode(v, None)
                 if newVertex is not None and newVertex.color=="White":
                     newVertex=self.getNode(v, node)
-                    newVertex.color="gray"
+                    newVertex.color="Gray"
                     newVertex.distance=node.distance+1
                     queue.append(newVertex)
                     newEdges.append(newVertex)
             node.color="Black"
             node.edges=newEdges
         return root
+    def depth_first_search(self):
+        for v in self.nodes:
+            vertex=self.getNode(v, None)
+            t
+            if vertex.color=='White':
+                self.visit_vertex(v)
         
+        
+    def visit_vertex(self,vertex):
+        if vertex.color!="Black":
+            if vertex.color=='White':
+                self.time+=1
+                vertex.distance=[self.time,0]
+                vertex.color='Gray'
+                
+            elif vertex.color=='Gray':
+                self.time+=1
+                vertex.distance[1]=self.time
+                vertex.color='Black'
+            result_tree=tree()
+            result_tree.leaf=vertex
+            tree.branches.append(vertex)
+            self.deepfirstSearch.append()
+            visit_vertex(vertex.edges[0])
+            return 
+            
+            
+       
 if __name__ == '__main__':
     graph=adjacency_list()
     graph.insert_node_by_vertex(1, [2,5])
